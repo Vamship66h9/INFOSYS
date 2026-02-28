@@ -1,0 +1,59 @@
+import pandas as pd
+import numpy as np
+df = pd.read_csv("/kaggle/input/datasets/vamshih9/health-and-finance/health_finance.csv")
+df.head()
+df.info()
+df.isnull().sum()
+df.columns = df.columns.str.strip()
+df[["Systolic_BP", "Diastolic_BP"]] = df["Blood_Pressure"].str.split("/", expand=True)
+df["Age"] = df["Age"].fillna(df["Age"].median())
+df["Cholesterol_Level"] = df["Cholesterol_Level"].fillna(df["Cholesterol_Level"].median())
+df["Medical_Expense"] = df["Medical_Expense"].fillna(df["Medical_Expense"].median())
+df["City"] = df["City"].fillna(df["City"].mode()[0])
+df.isnull().sum()
+df[["Systolic_BP", "Diastolic_BP"]] = df["Blood_Pressure"].str.split("/", expand=True)
+
+df["Systolic_BP"] = df["Systolic_BP"].astype(int)
+df["Diastolic_BP"] = df["Diastolic_BP"].astype(int)
+
+df.drop("Blood_Pressure", axis=1, inplace=True)
+binary_cols = ["Diabetes", "Heart_Disease", "Insurance_Status"]
+
+for col in binary_cols:
+    df[col] = df[col].map({"Yes": 1, "No": 0})
+binary_cols = ["Diabetes", "Heart_Disease", "Insurance_Status"]
+
+for col in binary_cols:
+    df[col] = df[col].map({"Yes": 1, "No": 0})
+df.drop(["Name"], axis=1, inplace=True)
+Q1 = df["BMI"].quantile(0.25)
+Q3 = df["BMI"].quantile(0.75)
+IQR = Q3 - Q1
+
+df = df[(df["BMI"] >= Q1 - 1.5*IQR) & (df["BMI"] <= Q3 + 1.5*IQR)]
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+num_cols = ["Age", "BMI", "Cholesterol_Level", "Monthly_Income",
+            "Medical_Expense", "Loan_Amount", "Credit_Score",
+            "Hospital_Visits_Per_Year", "Systolic_BP", "Diastolic_BP"]
+
+df[num_cols] = scaler.fit_transform(df[num_cols])
+df.to_csv("cleaned_health_finance_data.csv", index=False)
+binary_cols = ["Diabetes", "Heart_Disease", "Insurance_Status"]
+
+for col in binary_cols:
+    df[col] = df[col].map({"Yes": 1, "No": 0})
+df.drop_duplicates(inplace=True)
+df.shape
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+num_cols = ["Age", "BMI", "Cholesterol_Level", "Monthly_Income",
+            "Medical_Expense", "Loan_Amount", "Credit_Score",
+            "Hospital_Visits_Per_Year", "Systolic_BP", "Diastolic_BP"]
+
+df[num_cols] = scaler.fit_transform(df[num_cols])
+df.to_csv("cleaned_health_finance.csv", index=False)
