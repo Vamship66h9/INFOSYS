@@ -1,0 +1,11 @@
+Patient_ID,Name,Age,Gender,City,BMI,Cholesterol_Level,Blood_Pressure,Diabetes,Heart_Disease,Smoking_Status,Monthly_Income,Medical_Expense,Loan_Amount,Insurance_Status,Credit_Score,Hospital_Visits_Per_Year
+1001,Ramesh,45,Male,Hyderabad,27.5,250,140/90,No,Yes,Former,50000,8000,200000,Yes,720,3
+1002,Sita,,Female,Chennai,22.1,180,120/80,No,No,Never,40000,5000,150000,No,680,1
+1003,Arun,29,Male,Mumbai,30.2,300,150/95,Yes,No,Current,35000,,100000,Yes,650,4
+1004,Kavya,52,Female,Delhi,26.8,220,135/85,Yes,Yes,Never,60000,10000,300000,Yes,750,5
+1005,John,37,Male,,24.5,190,118/78,No,No,Current,45000,6000,180000,No,690,2
+1006,Priya,41,Female,Bangalore,28.3,,130/88,Yes,No,Never,55000,7500,250000,Yes,710,3
+1007,Meena,33,Female,Hyderabad,23.7,210,125/82,No,No,Never,48000,6500,120000,Yes,730,2
+1008,Raj,60,Male,Chennai,29.5,275,145/92,Yes,Yes,Former,70000,12000,400000,Yes,760,6
+1009,Anil,39,Male,Mumbai,31.1,260,142/90,Yes,No,Current,52000,9000,210000,Yes,700,4
+1010,Divya,28,Female,Delhi,21.4,170,110/70,No,No,Never,42000,4000,130000,No,690,1
